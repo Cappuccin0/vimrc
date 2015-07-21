@@ -1,0 +1,159 @@
+" =============================================================================
+"        << 判断操作系统是 Windows 还是 Linux 和判断是终端还是 Gvim >>
+" =============================================================================
+ 
+" -----------------------------------------------------------------------------
+"  < 判断操作系统是否是 Windows 还是 Linux >
+" -----------------------------------------------------------------------------
+let g:iswindows = 0
+let g:islinux = 0
+if(has("win32") || has("win64") || has("win95") || has("win16"))
+    let g:iswindows = 1
+else
+    let g:islinux = 1
+endif
+ 
+" -----------------------------------------------------------------------------
+"  < 判断是终端还是 Gvim >
+" -----------------------------------------------------------------------------
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
+
+
+" -----------------------------------------------------------------------------
+"  < 编写文件时的配置 >
+" -----------------------------------------------------------------------------
+" 常规模式下用空格键来开关光标行所在折叠（注：zR 展开所有折叠，zM 关闭所有折叠）
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+" 当文件在外部被修改，自动更新该文件
+set autoread
+
+" Ctrl + K 插入模式下光标向上移动
+imap <c-k> <Up>
+ 
+" Ctrl + J 插入模式下光标向下移动
+imap <c-j> <Down>
+ 
+" Ctrl + H 插入模式下光标向左移动
+imap <c-h> <Left>
+ 
+" Ctrl + L 插入模式下光标向右移动
+imap <c-l> <Right>
+
+set ignorecase                                        "搜索模式里忽略大小写
+set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
+
+
+" -----------------------------------------------------------------------------
+"  < 界面配置 >
+" -----------------------------------------------------------------------------
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+endfunction 
+" 设置 gVim 窗口初始位置及大小
+if g:isGUI
+	if g:iswindows
+		au GUIEnter * simalt ~x
+	else
+		au GUIEnter * call MaximizeWindow()
+	endif
+    
+    winpos 100 10                                     "指定窗口出现的位置，坐标原点在屏幕左上角
+    "set lines=38 columns=120                          "指定窗口大小，lines为高度，columns为宽度
+endif
+
+" 设置代码配色方案
+if g:isGUI
+    colorscheme molokai               "Gvim配色方案
+else
+    colorscheme molokai               "终端配色方案
+endif
+source ~/.vim/bundle/Mark/plugin/mark.vim
+"set background=dark 
+
+" -----------------------------------------------------------------------------
+"  < Tagbar 插件配置 >
+" -----------------------------------------------------------------------------
+" 相对 TagList 能更好的支持面向对象
+ 
+" 常规模式下输入 tb 调用插件，如果有打开 TagList 窗口则先将其关闭
+" nmap tb :TlistClose<CR>:TagbarToggle<CR>
+ 
+let g:tagbar_width=30                       "设置窗口宽度
+" let g:tagbar_left=1                         "在左侧窗口中显示
+
+set tags=.tags;../.tags;iss/.tags
+
+" Redefine ctrlp user command to index files
+if exists("g:ctrlp_user_command")
+	unlet g:ctrlp_user_command
+endif
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"let g:ctrlp_user_command = 'ag %s --nocolor -l -g ""'
+"let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_user_command = ['.ctrlp', 'cat %s/.ctrlp']
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=100
+let g:ctrlp_by_filename = 1
+
+" search mix by default
+nmap <C-p> :CtrlPMixed <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cscope setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" add cscope database and prefix to current folder
+" cs add ./cscope.out %:p:h/
+
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out %:p:h/
+  endif
+  set csverb
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" disable auto complete of neocomplete, only use tab to enable it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_disable_auto_complete = 1
+let g:neocomplete#disable_auto_complete = 1
+
+nmap <Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>zz
+
+set noautochdir
+let g:spf13_no_autochdir = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" close all other buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! BcloseOthers call <SID>BufCloseOthers()
+function! <SID>BufCloseOthers()
+   let l:currentBufNum   = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+   for i in range(1,bufnr("$"))
+     if buflisted(i)
+       if i!=l:currentBufNum
+         execute("bdelete ".i)
+       endif
+     endif
+   endfor
+endfunction
+map <leader>bdo :BcloseOthers<cr>

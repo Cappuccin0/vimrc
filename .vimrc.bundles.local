@@ -1,0 +1,8 @@
+"Bundle 'wincent/command-t'
+"Bundle -d "kien/ctrlp.vim"
+UnBundle 'tpope/vim-haml'
+UnBundle 'tpope/vim-rails'
+UnBundle 'hail2u/vim-css3-syntax'
+Bundle 'rking/ag.vim'
+Bundle 'Mark'
+Bundle 'exvim/ex-autocomplpop'
