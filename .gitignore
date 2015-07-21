@@ -1,0 +1,19 @@
+config-hgao.cfg
+.idea/
+
+
+# sh for update tags
+updateTags.sh
+
+# Tags files
+cscope.*
+.tags*
+tags
+GTAGS
+GRTAGS
+GPATH
+
+*.sublime-workspace
+*.sublime-project
+*.orig
+.ctrlp
