@@ -72,8 +72,8 @@ if g:isGUI
 else
     colorscheme molokai               "终端配色方案
 endif
-source ~/.vim/bundle/Mark/plugin/mark.vim
-"set background=dark 
+
+set guifont=Monaco:h14:b:cDEFAULT
 
 " -----------------------------------------------------------------------------
 "  < Tagbar 插件配置 >
