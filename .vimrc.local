@@ -73,7 +73,7 @@ else
     colorscheme molokai               "终端配色方案
 endif
 
-set guifont=Monaco:h14:b:cDEFAULT
+"set guifont=Monaco:h14:b:cDEFAULT
 
 " -----------------------------------------------------------------------------
 "  < Tagbar 插件配置 >
@@ -103,7 +103,8 @@ let g:ctrlp_max_depth=100
 let g:ctrlp_by_filename = 1
 
 " search mix by default
-nmap <C-p> :CtrlPMixed <CR>
+"nmap <C-p> :CtrlPMixed <CR>
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope setting
