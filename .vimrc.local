@@ -150,10 +150,19 @@ nmap <Leader>w :ptag <C-R>=expand("<cword>")<CR><CR>
 " Leader+q to close all preview window
 nmap <Leader>q :pc<CR>
 
-" Use F10-F12 for jump to tag
-nmap <F12> <C-]>
-nmap <F11> :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <F10> <C-T>
+" Shortcut for navigation {
+" jump back
+nmap <F1> <C-T>
+" jump to caller
+nmap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
+" jump to tag
+nmap <F3> <C-]>
+" jump to words
+nmap <F4> <Leader><Leader>w
+nmap <F5> <Leader><Leader>b
+" } 
+
+
 set noautochdir
 let g:spf13_no_autochdir = 1
 
