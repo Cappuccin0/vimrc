@@ -73,7 +73,7 @@ endif
 if g:isGUI
     colorscheme molokai               "Gvim配色方案
 else
-    colorscheme molokai               "终端配色方案
+    colorscheme peaksea               "终端配色方案
 endif
 
 "set guifont=Monaco:h14:b:cDEFAULT
