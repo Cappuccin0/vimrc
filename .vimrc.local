@@ -182,4 +182,5 @@ function! <SID>BufCloseOthers()
    endfor
 endfunction
 map <leader>bdo :BcloseOthers<cr>
+map <leader>bd bdelete %<cr>
 
