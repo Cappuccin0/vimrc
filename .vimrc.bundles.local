@@ -11,3 +11,5 @@ Bundle 'DrawIt'
 Bundle 'ervandew/supertab'
 Bundle 'luochen1990/rainbow'
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle"
+
+Bundle 'moll/vim-bbye'

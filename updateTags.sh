@@ -1,8 +1,14 @@
 #!/bin/sh
 echo Building filelist...
 rm cscope.po.out cscope.in.out cscope.out
+
+# Ag mode
 ag ./ -i -l -g "" > .ctrlp
-#git submodule foreach git ls-files > .ctrlp
+
+# Git mode
+#git ls-files > .ctrlp
+#git submodule foreach git ls-files >> .ctrlp
+
 echo -n files count: 
 cat .ctrlp | wc -l
 
