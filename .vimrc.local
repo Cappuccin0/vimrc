@@ -106,7 +106,8 @@ endif
 "let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_root_markers = ['.ctrlp']
 let g:ctrlp_user_command = ['.ctrlp', 'cat %s/.ctrlp']
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=100
 let g:ctrlp_by_filename = 1
@@ -114,6 +115,13 @@ let g:ctrlp_by_filename = 1
 " search mix by default
 "nmap <C-p> :CtrlPMixed <CR>
 let g:ctrlp_cmd = 'CtrlPMixed'
+
+" do not change project dir
+set noautochdir
+
+" always jumpback to the project root, as ctrlp is always changing curdir
+autocmd BufNewFile,BufRead,BufEnter * cd $PWD
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope setting
@@ -149,7 +157,7 @@ nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>zz
 
 nmap <Leader>f :Ag <C-R>=expand("<cword>")<CR><CR>
-nmap <Leader>g :Ag <C-R>=expand("<cword>")<CR> %<CR>
+nmap <Leader>g :Ag <C-R>=expand("<cword>")<CR>
 
 " Leader+w to open a tag in new preview window
 nmap <Leader>w :ptag <C-R>=expand("<cword>")<CR><CR>

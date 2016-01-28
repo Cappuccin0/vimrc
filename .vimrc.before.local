@@ -4,3 +4,6 @@ let g:spf13_no_autochdir = 1
 if !exists('g:spf13_bundle_groups')
         let g:spf13_bundle_groups=['general', 'programming', 'python']
 endif
+
+" do not change project dir
+set noautochdir
