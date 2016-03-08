@@ -1,9 +1,20 @@
 #!/bin/sh
 echo Building filelist...
-rm cscope.po.out cscope.in.out cscope.out
+rm cscope.po.out cscope.in.out cscope.out > /dev/null 2>&1
 
-# Ag mode
-ag ./ -i -l -g "" > .ctrlp
+if [ -r ".ctrlp_cust" ]
+then
+    rm -f .ctrlp > /dev/null
+    for line in `cat .ctrlp_cust`;
+    do
+        ag $line -ilg "" >> .ctrlp
+    done
+else
+    # Ag mode
+    ag ./ -i -l -g "" > .ctrlp
+fi
+
+exit 0
 
 # Git mode
 #git ls-files > .ctrlp
