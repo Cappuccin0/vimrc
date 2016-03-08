@@ -14,7 +14,6 @@ else
     ag ./ -i -l -g "" > .ctrlp
 fi
 
-exit 0
 
 # Git mode
 #git ls-files > .ctrlp
