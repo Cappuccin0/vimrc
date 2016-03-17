@@ -156,7 +156,7 @@ nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>zz
 
-nmap <Leader>f :Ag <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>f :Ag <C-R>=expand("<cword>")<CR> <C-R>=expand("%:h")<CR>
 nmap <Leader>g :Ag <C-R>=expand("<cword>")<CR>
 
 " Leader+w to open a tag in new preview window
