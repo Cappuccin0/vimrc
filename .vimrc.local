@@ -177,9 +177,11 @@ nmap <F1> <C-T>
 nmap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
 " jump to tag
 nmap <F3> <C-]>
+" jump to tag in new split window
+map <F4> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " jump to words
-nmap <F4> <Leader><Leader>w
-nmap <F5> <Leader><Leader>b
+nmap <F5> <Leader><Leader>w
+nmap <F6> <Leader><Leader>b
 " } 
 
 
