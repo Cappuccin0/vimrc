@@ -1,7 +1,11 @@
 #!/bin/sh
-echo Building filelist...
+# jump to script folder
+cd $(dirname $0)
+
+# remove previous result
 rm cscope.po.out cscope.in.out cscope.out > /dev/null 2>&1
 
+echo Building filelist...
 if [ -r ".ctrlp_cust" ]
 then
     rm -f .ctrlp > /dev/null
