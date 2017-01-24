@@ -206,7 +206,6 @@ endfunction
 map <leader>bdo :BcloseOthers<cr>
 map <leader>bd :Bdelete<cr>
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline font settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
