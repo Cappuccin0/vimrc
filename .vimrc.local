@@ -136,7 +136,7 @@ autocmd BufNewFile,BufRead,BufEnter * cd $PWD
 " cs add ./cscope.out %:p:h/
 
 if has("cscope")
-  set csprg=/usr/bin/cscope
+  set csprg=/usr/local/bin/cscope
   set csto=1
   set cst
   set nocsverb
