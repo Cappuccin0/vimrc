@@ -12,4 +12,8 @@ Bundle 'ervandew/supertab'
 
 Bundle 'moll/vim-bbye'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'wannesm/wmgraphviz.vim'
 
+" theme
+Plugin 'dracula/vim'
