@@ -136,15 +136,19 @@ autocmd BufNewFile,BufRead,BufEnter * cd $PWD
 " cs add ./cscope.out %:p:h/
 
 if has("cscope")
-  set csprg=/usr/local/bin/cscope
-  set csto=1
-  set cst
-  set nocsverb
-  " add any database in current directory
-  if filereadable("cscope.out")
-      cs add cscope.out %:p:h/
-  endif
-  set csverb
+    if OSX()
+        set csprg=/usr/local/bin/cscope
+    else
+        set csprg=/usr/bin/cscope
+    endif
+    set csto=1
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out %:p:h/
+    endif
+    set csverb
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,3 +233,4 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+set completeopt=longest,menu
