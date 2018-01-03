@@ -160,6 +160,9 @@ _fzf_compgen_path() {
   ag -g "" "$1"
 }
 
+# upgrade FZF
+alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
+
 # disable rm and use trash-cli instead
 #alias rm='echo "This is not the command you are looking for. Use trash-cli instead."; false'
 # use trash instead
@@ -168,6 +171,10 @@ alias rm='trash'
 alias apt='aptitude'
 
 # extract all helpdesk files
-alias exall='for i in `ls *.tar`; do j=`basename $i .tar`; mkdir "$j" && ex -i "$i" -o "$j"; done'
+alias exall='ls *.tar | while read i; do j=`basename "$i" .tar`; mkdir "$j" && extract_helpdesk.sh -i "$i" -o "$j" && mergelog.py "$j" > "$j".txt; done'
 
 export PATH=$PATH:~/workspace/MyScript/
+
+# add icdiff to path
+export PATH=$PATH:~/workspace/icdiff
+alias gic='git icdiff'
