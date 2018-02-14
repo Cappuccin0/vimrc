@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="fino-time-my"
+ZSH_THEME="fino-time"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -118,7 +118,7 @@ alias runtest='~/workspace/cnet/scripts/runTest.py'
 #PS1='\[\033[1;31m\]\u@\h \[\033[1;34m\]\W\[\033[1;31m\]$(__git_ps1 " (%s)")\[\033[1;35m\] -> \[\033[0m\]'
 
 # import z.sh for quick directory jumping
-. ~/workspace/z/z.sh
+#. ~/workspace/z/z.sh
 
 # manually update display env in case it goes wrong
 alias save_disp='echo $DISPLAY > ~/.display.txt'
