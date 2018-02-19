@@ -173,8 +173,14 @@ alias apt='aptitude'
 # extract all helpdesk files
 alias exall='ls *.tar | while read i; do j=`basename "$i" .tar`; mkdir "$j" && extract_helpdesk.sh -i "$i" -o "$j" && mergelog.py "$j" > "$j".txt; done'
 
-export PATH=$PATH:~/workspace/MyScript/
+export PATH=$PATH:~/workspace/myscript/
 
 # add icdiff to path
 export PATH=$PATH:~/workspace/icdiff
 alias gic='git icdiff'
+
+
+# restore monitor position for xfce
+# DP-2 DP-3 VGA-0
+alias restore_monitor='xrandr --output DP-2 --left-of VGA-0 --preferred --output DP-2 --primary; xrandr --output DP-3 --below DP-2 --output DP-3'
+#xrandr --output VGA-0 --right-of DP-2 --output DP-2
