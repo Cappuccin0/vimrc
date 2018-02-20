@@ -184,3 +184,6 @@ alias gic='git icdiff'
 # DP-2 DP-3 VGA-0
 alias restore_monitor='xrandr --output DP-2 --left-of VGA-0 --preferred --output DP-2 --primary; xrandr --output DP-3 --below DP-2 --output DP-3'
 #xrandr --output VGA-0 --right-of DP-2 --output DP-2
+
+# force logout
+alias logmeout='pkill -u $USER'
