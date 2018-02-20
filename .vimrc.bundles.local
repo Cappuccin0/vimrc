@@ -17,3 +17,4 @@ Plugin 'wannesm/wmgraphviz.vim'
 
 " theme
 Plugin 'dracula/vim'
+Plugin 'junegunn/vim-easy-align'
