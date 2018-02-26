@@ -187,3 +187,6 @@ alias restore_monitor='xrandr --output DP-2 --left-of VGA-0 --preferred --output
 
 # force logout
 alias logmeout='pkill -u $USER'
+
+# open last log by tmux-logging
+alias openlastlog='geany `ls ~/tmux-history-*.log -ct | head -1`'
