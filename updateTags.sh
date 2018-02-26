@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # jump to script folder
 cd $(dirname $0)
 
@@ -15,9 +15,8 @@ then
     done
 else
     # Ag mode
-    ag ./ -i -l -g "" > .ctrlp
+    ag -l -g "" $(pwd)  > .ctrlp
 fi
-
 
 # Git mode
 #git ls-files > .ctrlp
